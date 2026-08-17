@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>To Do List</title>
+
+    <!-- Google Font -->
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+
+    <!-- CSS -->
+
+    <link rel="stylesheet"
+          href="style.css">
+
+</head>
+
+<body>
+
+<!-- Background Blobs -->
+
+<div class="blob blob1"></div>
+<div class="blob blob2"></div>
+<div class="blob blob3"></div>
+
+<!-- Main Container -->
+
+<div class="container">
+
+<!-- ================= HEADER ================= -->
+
+<header>
+
+<div class="logo">
+
+<i class="fa-solid fa-list-check"></i>
+
+<div>
+
+<h1>To Do List</h1>
+
+<p>Organize your day efficiently</p>
+
+</div>
+
+</div>
+
+<button id="themeBtn">
+
+<i class="fa-solid fa-moon"></i>
+
+</button>
+
+</header>
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+<h2>
+
+Stay Organized.
+
+<br>
+
+Stay Productive.
+
+</h2>
+
+<p>
+
+Manage your daily tasks efficiently with smart categories,
+
+priorities, due dates and progress tracking.
+
+</p>
+
+</section>
+
+<!-- ================= ADD TASK ================= -->
+
+<section class="task-form">
+
+<div class="input-group">
+
+<label>
+
+Task Name
+
+</label>
+
+<input
+
+type="text"
+
+id="taskInput"
+
+placeholder="Enter your task...">
+
+</div>
+
+<div class="input-group">
+
+<label>
+
+Category
+
+</label>
+
+<select id="category">
+
+<option value="">Select Category</option>
+
+<option>Study</option>
+
+<option>Work</option>
+
+<option>Personal</option>
+
+<option>Shopping</option>
+
+<option>Health</option>
+
+</select>
+
+</div>
+
+<div class="input-group">
+
+<label>
+
+Priority
+
+</label>
+
+<select id="priority">
+
+<option value="">Select Priority</option>
+
+<option>High</option>
+
+<option>Medium</option>
+
+<option>Low</option>
+
+</select>
+
+</div>
+
+<div class="input-group">
+
+<label>
+
+Due Date
+
+</label>
+
+<input
+
+type="date"
+
+id="dueDate">
+
+</div>
+
+<button id="addTask">
+
+<i class="fa-solid fa-plus"></i>
+
+Add Task
+
+</button>
+
+</section>
+
+<!-- ================= DASHBOARD ================= -->
+
+<section class="dashboard">
+
+<div class="card">
+
+<div class="icon total">
+
+<i class="fa-solid fa-list"></i>
+
+</div>
+
+<div>
+
+<h3>Total Tasks</h3>
+
+<h2 id="totalTasks">
+
+0
+
+</h2>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="icon completed">
+
+<i class="fa-solid fa-circle-check"></i>
+
+</div>
+
+<div>
+
+<h3>Completed</h3>
+
+<h2 id="completedTasks">
+
+0
+
+</h2>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="icon pending">
+
+<i class="fa-solid fa-hourglass-half"></i>
+
+</div>
+
+<div>
+
+<h3>Pending</h3>
+
+<h2 id="pendingTasks">
+
+0
+
+</h2>
+
+</div>
+
+</div>
+
+<div class="card progress-card">
+
+<h3>
+
+Productivity
+
+</h3>
+
+<div class="progress">
+
+<div id="progressBar"></div>
+
+</div>
+
+<p id="progressText">
+
+0% Completed
+
+</p>
+
+</div>
+
+</section>
+<!-- ================= SEARCH & SORT ================= -->
+
+<section class="toolbar">
+
+    <div class="search-box">
+
+        <i class="fa-solid fa-magnifying-glass"></i>
+
+        <input
+            type="text"
+            id="searchTask"
+            placeholder="Search your tasks...">
+
+    </div>
+
+    <select id="sortTasks">
+
+        <option value="default">Sort By</option>
+        <option value="priority">Priority</option>
+        <option value="date">Due Date</option>
+        <option value="name">Task Name</option>
+
+    </select>
+
+</section>
+
+<!-- ================= FILTERS ================= -->
+
+<section class="filters">
+
+    <button class="filter active"
+            data-filter="all">
+
+        <i class="fa-solid fa-layer-group"></i>
+
+        All
+
+    </button>
+
+    <button class="filter"
+            data-filter="completed">
+
+        <i class="fa-solid fa-circle-check"></i>
+
+        Completed
+
+    </button>
+
+    <button class="filter"
+            data-filter="pending">
+
+        <i class="fa-solid fa-hourglass-half"></i>
+
+        Pending
+
+    </button>
+
+    <button class="filter"
+            data-filter="high">
+
+        <i class="fa-solid fa-fire"></i>
+
+        High Priority
+
+    </button>
+
+</section>
+
+<!-- ================= TASK LIST ================= -->
+
+<section class="tasks-section">
+
+    <div class="section-title">
+
+        <h2>
+
+            <i class="fa-solid fa-list-check"></i>
+
+            My Tasks
+
+        </h2>
+
+    </div>
+
+    <ul id="taskList">
+
+        <!-- JavaScript will insert tasks here -->
+
+    </ul>
+
+</section>
+
+<!-- ================= EMPTY STATE ================= -->
+
+<div id="emptyState"
+     class="empty-state">
+
+    <i class="fa-solid fa-clipboard-list"></i>
+
+    <h2>No Tasks Yet</h2>
+
+    <p>
+
+        Start by adding your first task and stay productive.
+
+    </p>
+
+</div>
+
+<!-- ================= DELETE MODAL ================= -->
+
+<div id="deleteModal"
+     class="modal">
+
+    <div class="modal-content">
+
+        <i class="fa-solid fa-trash-can"></i>
+
+        <h2>Delete Task?</h2>
+
+        <p>
+
+            This action cannot be undone.
+
+        </p>
+
+        <div class="modal-buttons">
+
+            <button id="cancelDelete">
+
+                Cancel
+
+            </button>
+
+            <button id="confirmDelete">
+
+                Delete
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ================= TOAST ================= -->
+
+<div id="toast">
+
+    <i class="fa-solid fa-circle-check"></i>
+
+    <span id="toastMessage">
+
+        Task Added Successfully
+
+    </span>
+
+</div>
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <p>
+
+        Developed with ❤️ by
+
+        <strong>Isha Chaudhary</strong>
+
+    </p>
+
+    <small>
+
+        © 2026 | To Do List Application
+
+    </small>
+
+</footer>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
+
+
